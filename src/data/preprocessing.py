@@ -66,3 +66,26 @@ def load_all_datasets() -> dict[str, pd.DataFrame]:
         "ccu_data": load_ccu_data(),
         "health_tiers": load_health_tiers(),
     }
+
+
+def export_processed_datasets() -> None:
+    # Load all datasets
+    datasets = load_all_datasets()
+
+    # Create processed data directory
+    output_dir = PROJECT_ROOT / "data" / "processed"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Export datasets
+    output_files = {
+        "games_index": "games-index.csv",
+        "ccu_data": "ccu-daily-top2000.csv",
+        "health_tiers": "health-tiers.csv",
+    }
+
+    for name, filename in output_files.items():
+        output_path = output_dir / filename
+        datasets[name].to_csv(output_path, index=False)
+
+        print(f"Exported: {output_path}")
+
