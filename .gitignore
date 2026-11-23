@@ -18,8 +18,8 @@ env/
 .env
 .env.*
 
-# Raw datasets
-data/raw/
+# Dataset files
+data/**/*.csv
 
 # OS files
 .DS_Store
