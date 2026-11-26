@@ -21,6 +21,10 @@ env/
 # Dataset files
 data/**/*.csv
 
+# Local analytical database
+data/*.duckdb
+data/*.duckdb.wal
+
 # OS files
 .DS_Store
 Thumbs.db
